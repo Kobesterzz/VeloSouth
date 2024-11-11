@@ -2,26 +2,26 @@
 .velo-south-container {
   font-family: Arial, sans-serif;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-/* Floating Blob */
+/* Floating and Shape-Changing Blob */
 .floating-blob {
   position: absolute;
-  top: 20%;
-  left: 50%;
-  width: 250px;
-  height: 250px;
+  top: 15%;
+  left: 25%;
+  width: 300px;
+  height: 300px;
   background: linear-gradient(45deg, green, blue);
-  border-radius: 50%;
-  animation: float 6s ease-in-out infinite, colorChange 5s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite, colorChange 5s ease-in-out infinite, morphShape 10s ease-in-out infinite;
   z-index: -1;
+  opacity: 0.3;
 }
 
-/* Keyframes for floating and color change */
+/* Keyframes for floating, color change, and shape morphing */
 @keyframes float {
   0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(20px, 10px); }
+  50% { transform: translate(20px, -10px); }
 }
 
 @keyframes colorChange {
@@ -29,7 +29,28 @@
   50% { background: linear-gradient(45deg, blue, green); }
 }
 
-/* Header section */
+/* Keyframes for shape morphing with more variety */
+@keyframes morphShape {
+  0% {
+    border-radius: 50% 50% 50% 50%; /* Circle */
+  }
+  20% {
+    border-radius: 80% 20% 70% 30% / 30% 70% 20% 80%; /* Asymmetric blob */
+  }
+  40% {
+    border-radius: 30% 70% 50% 90% / 80% 40% 80% 20%; /* More irregular shape */
+  }
+  60% {
+    border-radius: 70% 30% 20% 80% / 40% 60% 80% 20%; /* Distinct, sharp shape */
+  }
+  80% {
+    border-radius: 60% 40% 90% 10% / 10% 90% 40% 60%; /* Almost star-like shape */
+  }
+  100% {
+    border-radius: 50% 50% 50% 50%; /* Back to circle */
+  }
+}
+/* Header Section */
 .header {
   text-align: center;
   padding: 20px;
@@ -39,30 +60,40 @@
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 40px;
+  font-size: 1.2em;
 }
 
 .contact-button {
-  border: 1px solid black;
+  border: 2px solid #333;
   padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 1em;
   cursor: pointer;
+  background: none;
 }
 
 .intro h1 {
-  font-size: 2em;
+  font-size: 2.5em;
   color: black;
 }
 
 .velo-south-title {
   color: #42a5f5;
+  font-weight: bold;
+}
+
+.logo img {
+  width: 50px;
+  margin-top: 10px;
 }
 
 /* Content Section */
 .content-section {
   display: flex;
   flex-direction: column;
-  gap: 60px;
-  padding: 40px;
+  gap: 100px;
+  padding: 50px;
 }
 
 /* Content Item */
@@ -73,9 +104,10 @@
 }
 
 /* Rotating Image */
-.image {
+.image img {
   width: 200px;
   height: 200px;
+  border-radius: 20px;
   transition: transform 0.5s;
 }
 
@@ -88,17 +120,23 @@
   100% { transform: rotate(360deg); }
 }
 
+/* Text Styling */
+.text h2 {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.highlight {
+  color: #42a5f5;
+  font-weight: bold;
+}
+
 /* Text Fade-in */
 .text {
   opacity: 0;
   transition: opacity 0.5s ease-in;
 }
 
-.fade-in.active {
+.text.fade-in.active {
   opacity: 1;
-}
-
-/* Highlight for headings */
-.highlight {
-  color: #42a5f5;
 }

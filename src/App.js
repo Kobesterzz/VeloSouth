@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import './App.css'; // Make sure your CSS is linked here
+import './App.css';
 
 function VeloSouth() {
   const [rotate, setRotate] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setRotate(window.scrollY > 100); // Adjust threshold as needed
+      setRotate(window.scrollY > 100); // Trigger the rotation effect after scrolling a bit
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -30,13 +30,16 @@ function VeloSouth() {
         <div className="intro">
           <h1>Welcome to <span className="velo-south-title">VeloSouth</span></h1>
         </div>
+        <div className="logo">
+          <img src="logo.png" alt="VeloSouth Logo" />
+        </div>
       </header>
 
       {/* Rotating Image Sections */}
       <section className="content-section">
         {/* Ride Info Section */}
         <div className="content-item">
-          <div className={`text fade-in ${rotate ? 'active' : ''}`}>
+          <div className="text">
             <h2>Check Out Our <span className="highlight">Ride Info</span> -&gt;</h2>
           </div>
           <div className={`image rotate-clockwise ${rotate ? 'active' : ''}`}>
@@ -46,7 +49,7 @@ function VeloSouth() {
 
         {/* Kits Section */}
         <div className="content-item">
-          <div className={`text fade-in ${rotate ? 'active' : ''}`}>
+          <div className="text">
             <h2>Check Out Our <span className="highlight">Kits</span> -&gt;</h2>
           </div>
           <div className={`image rotate-clockwise ${rotate ? 'active' : ''}`}>
@@ -56,7 +59,7 @@ function VeloSouth() {
 
         {/* Pictures Section */}
         <div className="content-item">
-          <div className={`text fade-in ${rotate ? 'active' : ''}`}>
+          <div className="text">
             <h2>Check Out Our <span className="highlight">Pictures</span> -&gt;</h2>
           </div>
           <div className={`image rotate-clockwise ${rotate ? 'active' : ''}`}>
@@ -69,3 +72,4 @@ function VeloSouth() {
 }
 
 export default VeloSouth;
+
