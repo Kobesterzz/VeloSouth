@@ -20,23 +20,35 @@ function VeloSouth() {
       {/* Header Section */}
       <header className="header">
         <nav className="nav">
-          <ul>
-            <li>Ride Info</li>
-            <li>Kits</li>
-            <li>Pictures</li>
-          </ul>
-          <button className="contact-button">Contact</button>
+          
+          <div>
+            <ul>
+              <li>Ride Info</li>
+              <li>Kits</li>
+              <li>Pictures</li>
+            </ul>
+          </div>
+
+          <div>
+            <button className="contact-button">Contact</button>
+          </div>
+    
         </nav>
-        <div className="intro">
-          <h1>Welcome to <span className="velo-south-title">VeloSouth</span></h1>
-        </div>
-        <div className="logo">
-          <img src="logo.png" alt="VeloSouth Logo" />
-        </div>
       </header>
 
       {/* Rotating Image Sections */}
       <section className="content-section">
+
+        {/* Ride Info Section */}
+        <div className="content-item">
+          <div className="text">
+            <h2>Welcome to <span className="highlight">VeloSouth</span> -&gt;</h2>
+          </div>
+          <div className={`image rotate-clockwise ${rotate ? 'active' : ''}`}>
+          <img src="logo.png" alt="VeloSouth Logo" />
+          </div>
+        </div>
+
         {/* Ride Info Section */}
         <div className="content-item">
           <div className="text">
