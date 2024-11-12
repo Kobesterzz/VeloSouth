@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import Cycle from './img/Cycle.png'; // Use relative path
+import Pic from './img/Pic.jpg'
+import kits from './img/kits.png'
+import { ReactComponent as Logo } from './img/logo.svg'; // Import SVG as component
 
 function VeloSouth() {
-  const [rotate, setRotate] = useState(false);
+  const [activeItem, setActiveItem] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setRotate(window.scrollY > 100); // Trigger the rotation effect after scrolling a bit
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+useEffect(() => {
+  const handleScroll = () => {
+    const newActiveItem = Math.floor(window.scrollY / 300) % 4; // Adjust based on scroll position
+    setActiveItem(newActiveItem);
+  };
+  
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
 
   return (
     <div className="velo-south-container">
@@ -20,8 +27,8 @@ function VeloSouth() {
       {/* Header Section */}
       <header className="header">
         <nav className="nav">
-          
-          <div>
+          {/* Left-aligned navigation items */}
+          <div className="nav-items-left">
             <ul>
               <li>Ride Info</li>
               <li>Kits</li>
@@ -29,56 +36,57 @@ function VeloSouth() {
             </ul>
           </div>
 
-          <div>
+          {/* Right-aligned contact button */}
+          <div className="nav-contact">
             <button className="contact-button">Contact</button>
           </div>
-    
         </nav>
       </header>
 
-      {/* Rotating Image Sections */}
       <section className="content-section">
-
+      <div className="diamond-container">
         {/* Ride Info Section */}
-        <div className="content-item">
+        <div className={`content-item ${activeItem === 0 ? 'active' : ''}`}>
           <div className="text">
             <h2>Welcome to <span className="highlight">VeloSouth</span> -&gt;</h2>
           </div>
-          <div className={`image rotate-clockwise ${rotate ? 'active' : ''}`}>
-          <img src="logo.png" alt="VeloSouth Logo" />
+          <div className="image">
+            <Logo className="logo"/>
           </div>
         </div>
 
         {/* Ride Info Section */}
-        <div className="content-item">
+        <div className={`content-item ${activeItem === 1 ? 'active' : ''}`}>
           <div className="text">
             <h2>Check Out Our <span className="highlight">Ride Info</span> -&gt;</h2>
           </div>
-          <div className={`image rotate-clockwise ${rotate ? 'active' : ''}`}>
-            <img src="ride-info.jpg" alt="Cyclist" />
+          <div className="image">
+            <img src={Cycle} alt="Cyclist" />
           </div>
         </div>
 
         {/* Kits Section */}
-        <div className="content-item">
+        <div className={`content-item ${activeItem === 2 ? 'active' : ''}`}>
           <div className="text">
             <h2>Check Out Our <span className="highlight">Kits</span> -&gt;</h2>
           </div>
-          <div className={`image rotate-clockwise ${rotate ? 'active' : ''}`}>
-            <img src="kits.jpg" alt="Cycling Kits" />
+          <div className="image">
+            <img src={kits} alt="Cycling Kits" />
           </div>
         </div>
 
         {/* Pictures Section */}
-        <div className="content-item">
+        <div className={`content-item ${activeItem === 3 ? 'active' : ''}`}>
           <div className="text">
             <h2>Check Out Our <span className="highlight">Pictures</span> -&gt;</h2>
           </div>
-          <div className={`image rotate-clockwise ${rotate ? 'active' : ''}`}>
-            <img src="pictures.jpg" alt="Cycling Group" />
+          <div className="image">
+            <img src={Pic} alt="Cycling Group" />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+
     </div>
   );
 }

@@ -3,6 +3,9 @@
   font-family: Arial, sans-serif;
   position: relative;
   overflow-x: hidden;
+  
+  height:100vh;
+  width:auto;
 }
 
 .floating-blob {
@@ -16,7 +19,7 @@
   animation: float 120s ease-in-out infinite, smoothColorShift 20s ease infinite, morphShape 40s ease-in-out infinite, sizeChange 20s ease-in-out infinite;
   z-index: -1;
   opacity: 0.3;
-  filter: blur(12px); /* Apply blur effect */
+  filter: blur(15px); /* Apply blur effect */
 }
 
 /* Keyframes for smooth color shift using background-position */
@@ -70,17 +73,31 @@
   }
 }
 /* Header Section */
+/* Header Section */
 .header {
   text-align: center;
-  padding: 20px;
+  padding: 40px;
 }
 
-.nav ul {
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+/* Left-aligned navigation items */
+.nav-items-left ul {
   list-style: none;
   display: flex;
-  justify-content: center;
   gap: 40px;
-  font-size: 1.2em;
+  padding: 0;
+  margin: 0;
+}
+
+/* Right-aligned contact button */
+.nav-contact {
+  margin-left: auto;
 }
 
 .contact-button {
@@ -92,70 +109,78 @@
   background: none;
 }
 
-.intro h1 {
-  font-size: 2.5em;
-  color: black;
+/* Diamond Container */
+.diamond-container {
+  position: relative;
+  z-index: 1; /* Lower z-index than the blob */
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  perspective: 1000px;
 }
 
-.velo-south-title {
-  color: #42a5f5;
-  font-weight: bold;
-}
-
-.logo img {
-  width: 50px;
-  margin-top: 10px;
-}
-
-/* Content Section */
+/* Other Sections and Content */
 .content-section {
+  position: relative;
+  z-index: 1; /* Ensures content is below the blob */
+}
+
+
+/* Content Item Styling */
+.content-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 100px;
-  padding: 50px;
-}
-
-/* Content Item */
-.content-item {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
 }
 
-/* Rotating Image */
+.content-item.active {
+  opacity: 1;
+  transform: rotate(45deg) translateZ(50px); /* Add a slight 3D effect */
+}
+
+/* Rotation effect for each item */
+.content-item.rotate {
+  animation: diamondRotate 5s infinite ease-in-out;
+}
+
+@keyframes diamondRotate {
+  0% { transform: rotate(45deg) translateZ(50px); }
+  25% { transform: rotate(135deg) translateZ(50px); }
+ 50% { transform: rotate(225deg) translateZ(50px); }
+ 75% { transform: rotate(315deg) translateZ(50px); }
+ 100% { transform: rotate(45deg) translateZ(50px); }
+}
+
+/* Image Styling in Content Item */
+.image {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+
 .image img {
-  width: 200px;
-  height: 200px;
-  border-radius: 20px;
-  transition: transform 0.5s;
-}
-
-.rotate-clockwise.active {
-  animation: rotateDiamond 5s linear infinite;
-}
-
-@keyframes rotateDiamond {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Text Styling */
 .text h2 {
-  font-size: 2em;
-  font-weight: 500;
+  transform: rotate(-45deg); /* Counter-rotate text to keep it upright */
+  font-size: 1.2em;
+  text-align: center;
 }
 
 .highlight {
   color: #42a5f5;
   font-weight: bold;
-}
-
-/* Text Fade-in */
-.text {
-  opacity: 0;
-  transition: opacity 0.5s ease-in;
-}
-
-.text.fade-in.active {
-  opacity: 1;
 }
