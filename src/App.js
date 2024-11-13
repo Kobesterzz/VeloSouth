@@ -8,26 +8,21 @@ import { ReactComponent as Logo } from './img/logo.svg'; // Import SVG as compon
 function VeloSouth() {
   const [activeItem, setActiveItem] = useState(0);
 
-useEffect(() => {
-  const handleScroll = () => {
-    const newActiveItem = Math.floor(window.scrollY / 300) % 4; // Adjust based on scroll position
-    setActiveItem(newActiveItem);
-  };
-  
-  window.addEventListener('scroll', handleScroll);
-  return () => window.removeEventListener('scroll', handleScroll);
-}, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      const newActiveItem = Math.floor(window.scrollY / 300) % 4;
+      setActiveItem(newActiveItem);
+    };
 
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="velo-south-container">
-      {/* Floating Blob Background */}
       <div className="floating-blob"></div>
-
-      {/* Header Section */}
       <header className="header">
         <nav className="nav">
-          {/* Left-aligned navigation items */}
           <div className="nav-items-left">
             <ul>
               <li>Ride Info</li>
@@ -35,8 +30,6 @@ useEffect(() => {
               <li>Pictures</li>
             </ul>
           </div>
-
-          {/* Right-aligned contact button */}
           <div className="nav-contact">
             <button className="contact-button">Contact</button>
           </div>
@@ -44,52 +37,55 @@ useEffect(() => {
       </header>
 
       <section className="content-section">
-      <div className="diamond-container">
-        {/* Ride Info Section */}
-        <div className={`content-item ${activeItem === 0 ? 'active' : ''}`}>
-          <div className="text">
-            <h2>Welcome to <span className="highlight">VeloSouth</span> -&gt;</h2>
+        <div className="diamond-container">
+          <div className={`content-item ${activeItem === 0 ? 'active' : ''}`}>
+            {activeItem === 0 && (
+              <div className="text">
+                <h2>Welcome to <span className="highlight">VeloSouth</span> -&gt;</h2>
+              </div>
+            )}
+            <div className="image">
+              <Logo className="logo"/>
+            </div>
           </div>
-          <div className="image">
-            <Logo className="logo"/>
-          </div>
-        </div>
 
-        {/* Ride Info Section */}
-        <div className={`content-item ${activeItem === 1 ? 'active' : ''}`}>
-          <div className="text">
-            <h2>Check Out Our <span className="highlight">Ride Info</span> -&gt;</h2>
+          <div className={`content-item ${activeItem === 1 ? 'active' : ''}`}>
+            {activeItem === 1 && (
+              <div className="text">
+                <h2>Check Out Our <span className="highlight">Ride Info</span> -&gt;</h2>
+              </div>
+            )}
+            <div className="image">
+              <img src={Cycle} alt="Cyclist" />
+            </div>
           </div>
-          <div className="image">
-            <img src={Cycle} alt="Cyclist" />
-          </div>
-        </div>
 
-        {/* Kits Section */}
-        <div className={`content-item ${activeItem === 2 ? 'active' : ''}`}>
-          <div className="text">
-            <h2>Check Out Our <span className="highlight">Kits</span> -&gt;</h2>
+          <div className={`content-item ${activeItem === 2 ? 'active' : ''}`}>
+            {activeItem === 2 && (
+              <div className="text">
+                <h2>Check Out Our <span className="highlight">Kits</span> -&gt;</h2>
+              </div>
+            )}
+            <div className="image">
+              <img src={kits} alt="Cycling Kits" />
+            </div>
           </div>
-          <div className="image">
-            <img src={kits} alt="Cycling Kits" />
-          </div>
-        </div>
 
-        {/* Pictures Section */}
-        <div className={`content-item ${activeItem === 3 ? 'active' : ''}`}>
-          <div className="text">
-            <h2>Check Out Our <span className="highlight">Pictures</span> -&gt;</h2>
+          <div className={`content-item ${activeItem === 3 ? 'active' : ''}`}>
+            {activeItem === 3 && (
+              <div className="text">
+                <h2>Check Out Our <span className="highlight">Pictures</span> -&gt;</h2>
+              </div>
+            )}
+            <div className="image">
+              <img src={Pic} alt="Cycling Group" />
+            </div>
           </div>
-          <div className="image">
-            <img src={Pic} alt="Cycling Group" />
-          </div>
+          
         </div>
-      </div>
-    </section>
-
+      </section>
     </div>
   );
 }
 
 export default VeloSouth;
-
