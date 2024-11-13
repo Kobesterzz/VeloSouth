@@ -10,7 +10,8 @@ function VeloSouth() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const newActiveItem = Math.floor(window.scrollY / 300) % 4;
+      // Calculate which item should be active based on scroll position
+      const newActiveItem = Math.floor(window.scrollY / 300) % 4; // Adjust 300 based on your preferred scroll distance per item
       setActiveItem(newActiveItem);
     };
 
@@ -38,54 +39,48 @@ function VeloSouth() {
 
       <section className="content-section">
         <div className="diamond-container">
-          <div className={`content-item ${activeItem === 0 ? 'active' : ''}`}>
-            {activeItem === 0 && (
-              <div className="text">
-                <h2>Welcome to <span className="highlight">VeloSouth</span> -&gt;</h2>
-              </div>
-            )}
+          {/* Each item is conditionally styled based on whether it's the active item */}
+          <div className={`content-item ${activeItem === 0 ? 'active' : ''}`} id="item-1">
             <div className="image">
-              <Logo className="logo"/>
+              <Logo className="logo" />
+            </div>
+            <div className="text">
+              <h2>Welcome to <span className="highlight">VeloSouth</span> -&gt;</h2>
             </div>
           </div>
 
-          <div className={`content-item ${activeItem === 1 ? 'active' : ''}`}>
-            {activeItem === 1 && (
-              <div className="text">
-                <h2>Check Out Our <span className="highlight">Ride Info</span> -&gt;</h2>
-              </div>
-            )}
+          <div className={`content-item ${activeItem === 1 ? 'active' : ''}`} id="item-2">
             <div className="image">
               <img src={Cycle} alt="Cyclist" />
             </div>
+            <div className="text">
+              <h2>Check Out Our <span className="highlight">Ride Info</span> -&gt;</h2>
+            </div>
           </div>
 
-          <div className={`content-item ${activeItem === 2 ? 'active' : ''}`}>
-            {activeItem === 2 && (
-              <div className="text">
-                <h2>Check Out Our <span className="highlight">Kits</span> -&gt;</h2>
-              </div>
-            )}
+          <div className={`content-item ${activeItem === 2 ? 'active' : ''}`} id="item-3">
             <div className="image">
               <img src={kits} alt="Cycling Kits" />
             </div>
+            <div className="text">
+              <h2>Check Out Our <span className="highlight">Kits</span> -&gt;</h2>
+            </div>
           </div>
 
-          <div className={`content-item ${activeItem === 3 ? 'active' : ''}`}>
-            {activeItem === 3 && (
-              <div className="text">
-                <h2>Check Out Our <span className="highlight">Pictures</span> -&gt;</h2>
-              </div>
-            )}
+          <div className={`content-item ${activeItem === 3 ? 'active' : ''}`} id="item-4">
             <div className="image">
               <img src={Pic} alt="Cycling Group" />
             </div>
+            <div className="text">
+              <h2>Check Out Our <span className="highlight">Pictures</span> -&gt;</h2>
+            </div>
           </div>
-          
         </div>
       </section>
     </div>
   );
 }
+
+
 
 export default VeloSouth;
