@@ -1,11 +1,37 @@
-import React from "react";
-import "./App.css"; 
+import React, { useEffect, useRef } from "react";
+import "./App.css";
 import Cycle from "./img/Cycle.png";
 import Kits from "./img/kits.png";
 import Logo from "./img/logo.svg";
 import Pic from "./img/Pic.jpg";
 
 function GradientAnimationSection() {
+  const contentRefs = useRef([]);
+  const cardRefs = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      {
+        threshold: 0.2, // Trigger when 20% is visible
+      }
+    );
+
+    contentRefs.current.forEach((ref) => ref && observer.observe(ref));
+    cardRefs.current.forEach((ref) => ref && observer.observe(ref));
+
+    return () => {
+      contentRefs.current.forEach((ref) => ref && observer.unobserve(ref));
+      cardRefs.current.forEach((ref) => ref && observer.unobserve(ref));
+    };
+  }, []);
+
   return (
     <div className="section">
       <div className="video-visual">
@@ -41,7 +67,7 @@ function GradientAnimationSection() {
               desc: "Immerse yourself in a world where legends clash and heroes rise to glory.",
             },
             {
-              img:Kits,
+              img: Kits,
               alt: "Kit",
               headline: "Buy our",
               highlight: "Kits",
@@ -55,7 +81,11 @@ function GradientAnimationSection() {
               desc: "Lead your team to victory with unparalleled strength and unwavering determination.",
             },
           ].map((content, index) => (
-            <div className={`content content-${index + 1}`} key={index}>
+            <div
+              className={`content content-${index + 1}`}
+              key={index}
+              ref={(el) => (contentRefs.current[index] = el)}
+            >
               <div className="mobile-visual">
                 <img className="card-img" src={content.img} alt={content.alt} />
               </div>
@@ -71,13 +101,12 @@ function GradientAnimationSection() {
         </div>
         <div className="visual">
           <div className="card-wrapper">
-            {[
-              Logo,
-              Cycle,
-              Kits,
-              Pic,
-            ].map((img, index) => (
-              <div className={`card card-${index + 1}`} key={index}>
+            {[Logo, Cycle, Kits, Pic].map((img, index) => (
+              <div
+                className={`card card-${index + 1}`}
+                key={index}
+                ref={(el) => (cardRefs.current[index] = el)}
+              >
                 <img className="card-img" src={img} alt={`Card ${index + 1}`} />
               </div>
             ))}
