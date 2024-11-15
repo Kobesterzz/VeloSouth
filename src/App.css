@@ -1,7 +1,4 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-
+/* General Reset */
 *,
 ::before,
 ::after {
@@ -18,14 +15,14 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   min-block-size: 100vh;
   margin: 0;
 }
 
 /* Header Styles */
 .header {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.559);
   border-bottom: 1px solid #e0e0e0;
   padding: 20px;
 }
@@ -65,14 +62,17 @@ body {
 /* Section Styles */
 .section {
   display: grid;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.171);
   position: relative;
   min-height: 100vh;
-  grid-template-columns: 1fr 1fr; /* Ensures two-column layout on desktop */
+  max-width: 1200px;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr; /* Two-column layout */
+  gap: 20px;
 }
 
 .video-visual {
-  grid-column: 1 / -1; /* Takes full width */
+  grid-column: 1 / -1; /* Video spans full width */
   inline-size: 100%;
   block-size: 100%;
   position: absolute;
@@ -84,7 +84,7 @@ body {
   inline-size: 100%;
   block-size: 100%;
   object-fit: cover;
-  z-index:  -5;
+  z-index: -5;
 }
 
 .section-wrapper {
@@ -98,8 +98,20 @@ body {
   gap: 20px;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.mobile-visual {
+  display: none; /* Hide on desktop */
+}
+
 .meta {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -149,7 +161,6 @@ body {
   object-fit: cover;
 }
 
-/* Card specific animations */
 .card-1 {
   transform: scale(1);
   opacity: 1;
@@ -157,7 +168,7 @@ body {
 
 /* Media Queries */
 @media (max-width: 960px) {
-  .section-wrapper {
+  .section {
     grid-template-columns: 1fr; /* Single-column layout on mobile */
     padding-top: var(--nav-block-size);
   }
@@ -170,12 +181,22 @@ body {
     gap: 20px;
   }
 
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content on mobile */
+  }
+
   .headline {
     font-size: 20px;
   }
 
   .desc {
     font-size: 14px;
+  }
+
+  .mobile-visual {
+    display: block; /* Show images on mobile */
   }
 }
 
