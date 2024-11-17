@@ -14,12 +14,15 @@ function GradientAnimationSection() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            console.log(`Intersecting: ${entry.target.className}`);
             entry.target.classList.add("show");
+          } else {
+            entry.target.classList.remove("show"); // Optional for reverse animation
           }
         });
       },
       {
-        threshold: 0.2, // Trigger when 20% is visible
+        threshold: 0.1, // Trigger when 20% is visible
       }
     );
 
