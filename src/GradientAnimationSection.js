@@ -14,25 +14,24 @@ function GradientAnimationSection() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            console.log(`Intersecting: ${entry.target.className}`);
+            console.log(`Adding 'show' to`, entry.target); // Debug log
             entry.target.classList.add("show");
           } else {
-            entry.target.classList.remove("show"); // Optional for reverse animation
+            entry.target.classList.remove("show");
           }
         });
       },
-      {
-        threshold: 0.1, // Trigger when 20% is visible
-      }
+      { threshold: 0.2 }
     );
-
+  
+    // Observe each card
     contentRefs.current.forEach((ref) => ref && observer.observe(ref));
     cardRefs.current.forEach((ref) => ref && observer.observe(ref));
 
-    return () => {
-      contentRefs.current.forEach((ref) => ref && observer.unobserve(ref));
-      cardRefs.current.forEach((ref) => ref && observer.unobserve(ref));
-    };
+  return () => {
+    contentRefs.current.forEach((ref) => ref && observer.unobserve(ref));
+    cardRefs.current.forEach((ref) => ref && observer.unobserve(ref));
+  };
   }, []);
 
   return (
@@ -64,7 +63,7 @@ function GradientAnimationSection() {
             },
             {
               img: Cycle,
-              alt: "cyclist",
+              alt: "Cyclist",
               headline: "Learn more About",
               highlight: "Ride Info",
               desc: "Immerse yourself in a world where legends clash and heroes rise to glory.",
@@ -84,11 +83,7 @@ function GradientAnimationSection() {
               desc: "Lead your team to victory with unparalleled strength and unwavering determination.",
             },
           ].map((content, index) => (
-            <div
-              className={`content content-${index + 1}`}
-              key={index}
-              ref={(el) => (contentRefs.current[index] = el)}
-            >
+            <div className="content-wrapper" ref={(el) => (contentRefs.current[index] = el)}>
               <div className="mobile-visual">
                 <img className="card-img" src={content.img} alt={content.alt} />
               </div>
