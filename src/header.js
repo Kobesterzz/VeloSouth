@@ -6,10 +6,10 @@ function Header() {
     <header className="header">
       <nav className="nav">
         <div className="nav-items-left">
-          <ul>
-            <li>Ride Info</li>
-            <li>Kits</li>
-            <li>Pictures</li>
+          <ul className="nav-list">
+            <li className="nav-item">Ride Info</li>
+            <li className="nav-item">Kits</li>
+            <li className="nav-item">Pictures</li>
           </ul>
         </div>
         <div className="nav-contact">

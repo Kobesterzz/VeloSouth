@@ -6,43 +6,72 @@ import Logo from "./img/logo.svg";
 import Pic from "./img/Pic.jpg";
 
 function GradientAnimationSection() {
-  const contentRefs = useRef([]);
+  const visualRef = useRef(null);
   const cardRefs = useRef([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            console.log(`Adding 'show' to`, entry.target); // Debug log
-            entry.target.classList.add("show");
-          } else {
-            entry.target.classList.remove("show");
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-  
-    // Observe each card
-    contentRefs.current.forEach((ref) => ref && observer.observe(ref));
-    cardRefs.current.forEach((ref) => ref && observer.observe(ref));
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const viewportHeight = window.innerHeight;
 
-  return () => {
-    contentRefs.current.forEach((ref) => ref && observer.unobserve(ref));
-    cardRefs.current.forEach((ref) => ref && observer.unobserve(ref));
-  };
+      cardRefs.current.forEach((card, index) => {
+        const start = index * viewportHeight;
+        const end = start + viewportHeight;
+
+        // Update the background visual's filter
+        if (scrollTop >= start && scrollTop < end) {
+          visualRef.current.className = `video-visual section-${index + 1}`;
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
+  const cards = [
+    {
+      img: Logo,
+      alt: "Logo",
+      headline: "Welcome To",
+      highlight: "VeloSouth",
+      desc: "Join the battle and conquer the arena with unmatched skill and strategy.",
+    },
+    {
+      img: Cycle,
+      alt: "Cyclist",
+      headline: "Learn more About",
+      highlight: "Ride Info",
+      desc: "Immerse yourself in a world where legends clash and heroes rise to glory.",
+    },
+    {
+      img: Kits,
+      alt: "Kit",
+      headline: "Buy our",
+      highlight: "Kits",
+      desc: "Harness powerful spells and enchantments to dominate your foes and change the course of battle.",
+    },
+    {
+      img: Pic,
+      alt: "Img of team",
+      headline: "Take a look at our ",
+      highlight: "Pictures",
+      desc: "Lead your team to victory with unparalleled strength and unwavering determination.",
+    },
+  ];
+
   return (
-    <div className="section">
-      <div className="video-visual">
+    <div className="gradient-animation-section">
+      {/* Background visual */}
+      <div ref={visualRef} className="video-visual section-1">
         <video
           className="video"
           autoPlay
           loop
           muted
-          poster=""
+          playsInline
           aria-label="background gradient animation"
         >
           <source
@@ -51,65 +80,27 @@ function GradientAnimationSection() {
           />
         </video>
       </div>
-      <div className="section-wrapper">
-        <div className="content-wrapper">
-          {[
-            {
-              img: Logo,
-              alt: "Logo",
-              headline: "Welcome To",
-              highlight: "VeloSouth",
-              desc: "Join the battle and conquer the arena with unmatched skill and strategy.",
-            },
-            {
-              img: Cycle,
-              alt: "Cyclist",
-              headline: "Learn more About",
-              highlight: "Ride Info",
-              desc: "Immerse yourself in a world where legends clash and heroes rise to glory.",
-            },
-            {
-              img: Kits,
-              alt: "Kit",
-              headline: "Buy our",
-              highlight: "Kits",
-              desc: "Harness powerful spells and enchantments to dominate your foes and change the course of battle.",
-            },
-            {
-              img: Pic,
-              alt: "Img of team",
-              headline: "Take a look at our ",
-              highlight: "Pictures",
-              desc: "Lead your team to victory with unparalleled strength and unwavering determination.",
-            },
-          ].map((content, index) => (
-            <div className="content-wrapper" ref={(el) => (contentRefs.current[index] = el)}>
-              <div className="mobile-visual">
-                <img className="card-img" src={content.img} alt={content.alt} />
-              </div>
-              <div className="meta">
-                <h2 className="headline">
-                  {content.headline}
-                  <span className="text-highlight"> {content.highlight}</span>
-                </h2>
-                <p className="desc">{content.desc}</p>
-              </div>
+
+      {/* Scrollable card content */}
+      <div className="scroll-container">
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            className="card-section"
+            ref={(el) => (cardRefs.current[index] = el)}
+          >
+            <div className="content">
+              <h2 className="headline">
+                {card.headline}
+                <span className="text-highlight"> {card.highlight}</span>
+              </h2>
+              <p className="desc">{card.desc}</p>
             </div>
-          ))}
-        </div>
-        <div className="visual">
-          <div className="card-wrapper">
-            {[Logo, Cycle, Kits, Pic].map((img, index) => (
-              <div
-                className={`card card-${index + 1}`}
-                key={index}
-                ref={(el) => (cardRefs.current[index] = el)}
-              >
-                <img className="card-img" src={img} alt={`Card ${index + 1}`} />
-              </div>
-            ))}
+            <div className="image">
+              <img src={card.img} alt={card.alt} className="card-img" />
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
