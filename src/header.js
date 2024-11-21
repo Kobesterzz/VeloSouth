@@ -7,9 +7,10 @@ function Header() {
       <nav className="nav">
         <div className="nav-items-left">
           <ul className="nav-list">
-            <li className="nav-item">Ride Info</li>
-            <li className="nav-item">Kits</li>
-            <li className="nav-item">Pictures</li>
+          <li><a href="#welcome">Home</a></li>
+          <li><a href="#Ride-info">Ride Info</a></li>
+          <li><a href="#Kits">Kits</a></li>
+          <li><a href="#Pics">Pictures</a></li>
           </ul>
         </div>
         <div className="nav-contact">

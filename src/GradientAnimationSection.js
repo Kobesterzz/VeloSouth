@@ -33,6 +33,7 @@ function GradientAnimationSection() {
 
   const cards = [
     {
+      id:"welcome",
       img: Logo,
       alt: "Logo",
       headline: "Welcome To",
@@ -40,6 +41,7 @@ function GradientAnimationSection() {
       desc: "Join the battle and conquer the arena with unmatched skill and strategy.",
     },
     {
+      id:"Ride-info",
       img: Cycle,
       alt: "Cyclist",
       headline: "Learn more About",
@@ -47,6 +49,7 @@ function GradientAnimationSection() {
       desc: "Immerse yourself in a world where legends clash and heroes rise to glory.",
     },
     {
+      id:"Kits",
       img: Kits,
       alt: "Kit",
       headline: "Buy our",
@@ -54,6 +57,7 @@ function GradientAnimationSection() {
       desc: "Harness powerful spells and enchantments to dominate your foes and change the course of battle.",
     },
     {
+      id:"Pics",
       img: Pic,
       alt: "Img of team",
       headline: "Take a look at our ",
@@ -86,6 +90,7 @@ function GradientAnimationSection() {
         {cards.map((card, index) => (
           <div
             key={index}
+            id={card.id}
             className="card-section"
             ref={(el) => (cardRefs.current[index] = el)}
           >
