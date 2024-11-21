@@ -32,47 +32,41 @@ body {
   background: transparent;
 }
 
-
 /* Header Styles */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.5); /* Transparent black background */
-  backdrop-filter: blur(10px); /* Adds a blurred effect */
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
   color: #fff;
-  z-index: 10; /* Stays above other elements */
+  z-index: 10;
   padding: 10px 50px;
   display: flex;
-  justify-content: space-between; /* Spreads left and right sides */
+  justify-content: space-between;
   align-items: center;
-  
 }
 
 /* Navigation Container */
 .nav {
   display: flex;
-  justify-content: space-between; /* Spread left and right sides */
+  justify-content: space-between;
   align-items: center;
-  width: 100%; /* Ensures full-width spacing */
+  width: 100%;
 }
 
-/* Left Navigation Items */
 .nav-items-left {
   display: flex;
 }
 
 .nav-list {
   display: flex;
-  gap: 50px; /* Increased space between list items */
+  gap: 50px;
   list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
-
 }
-
 
 .nav-list a {
   text-decoration: none;
@@ -81,9 +75,8 @@ body {
 }
 
 .nav-list a:hover {
-  color: #007bff;
+  color: #0070f3;
 }
-
 
 .nav-item {
   font-size: 1rem;
@@ -98,21 +91,65 @@ body {
   display: flex;
 }
 
+/* Contact Button Styling */
 .contact-button {
   padding: 10px 20px;
-  border: 2px solid #00c6ff;
-  border-radius: 20px;
-  background: none;
-  color: #00c8ff;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+
+  /* Border and radius */
+  border: 2px solid transparent;
+  border-radius: 30px; /* Ensure rounded corners */
+
+  /* Transition effects */
+  transition: background 0.3s ease, border-radius 0.3s ease, color 0.3s ease;
 }
 
+/* Dynamic Gradient for Highlighted Text and Contact Button */
+body.section-1 .contact-button {
+  border-image: linear-gradient(to right, #008200, #00bd00); /* Green gradient border */
+  border-image-slice: 1;
+  background: linear-gradient(to right, #008200, #00bd00); /* Gradient background for the text */
+  background-clip: text; /* Clip the background to the text */
+  -webkit-background-clip: text; /* WebKit-specific clipping */
+  -webkit-text-fill-color: transparent; /* Make the text itself transparent */
+}
+
+body.section-2 .contact-button {
+  border-image: linear-gradient(to right, #909000, #be8f00); /* Yellow gradient border */
+  border-image-slice: 1;
+  background: linear-gradient(to right, #909000, #c09000); /* Gradient background for the text */
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.section-3 .contact-button {
+  border-image: linear-gradient(to right, #6a0000, #ff6666); /* Red gradient border */
+  border-image-slice: 1;
+  background: linear-gradient(to right, #6a0000, #ff6666); /* Gradient background for the text */
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.section-4 .contact-button {
+  border-image: linear-gradient(to right, #000087, #6666ff); /* Blue gradient border */
+  border-image-slice: 1;
+  background: linear-gradient(to right, #000087, #6666ff); /* Gradient background for the text */
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Contact Button Hover Effect */
 .contact-button:hover {
-  background: #00c6ff;
-  color: #fff;
+  background: linear-gradient(to right, currentColor, currentColor); /* Fill with gradient */
+  -webkit-background-clip: padding-box;
+  -webkit-text-fill-color: white;
+  color: white; /* Fallback for text */
+  border-radius: 30px; /* Ensure it remains rounded on hover */
 }
 
 /* Responsive Design */
@@ -138,7 +175,6 @@ body {
   }
 }
 
-
 /* Background Visual */
 .video-visual {
   position: fixed;
@@ -146,7 +182,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Behind all content */
+  z-index: -1;
   overflow: hidden;
   transition: filter 0.8s ease-in-out;
 }
@@ -158,20 +194,19 @@ body {
 }
 
 .video-visual.section-1 {
-  filter: hue-rotate(120deg); /* Adds a green hue */
-
+  filter: hue-rotate(120deg);
 }
 
 .video-visual.section-2 {
-  filter: hue-rotate(60deg); /* Adds a yellow hue */
+  filter: hue-rotate(60deg);
 }
 
 .video-visual.section-3 {
-  filter: hue-rotate(0deg); 
+  filter: hue-rotate(0deg);
 }
 
 .video-visual.section-4 {
-  filter: hue-rotate(240deg); /* Adds a blue hue */
+  filter: hue-rotate(240deg);
 }
 
 /* Scroll Container */
@@ -180,8 +215,7 @@ body {
   flex-direction: column;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
-  /*height: 100vh;  Full screen for scroll container */
-  padding-top: 70px; /* To prevent content from overlapping header */
+  padding-top: 70px;
 }
 
 /* Each Card Section */
@@ -190,11 +224,11 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Each section takes up the full viewport */
+  height: 100vh;
   scroll-snap-align: start;
   position: relative;
   column-gap: 10%;
-  z-index: 1; /* Above the background visual */
+  z-index: 1;
 }
 
 .card-section .content {
@@ -209,11 +243,36 @@ body {
 }
 
 .card-section .text-highlight {
-  color: #0070f3;
-  background: linear-gradient(to right, #0070f3, #00c6ff);
+  color: inherit;
+  transition: color 0.8s ease;
+}
+
+/* Dynamic Highlight Gradients */
+/* Dynamic Highlight Gradients */
+body.section-1 .text-highlight {
+  background: linear-gradient(to right, #008400, #4dd44d); /* Green gradient */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+body.section-2 .text-highlight {
+  background: linear-gradient(to right, #848400, #bc8d00); /* Yellow gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.section-3 .text-highlight {
+  background: linear-gradient(to right, #7c0000, #ff6565); /* Red gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.section-4 .text-highlight {
+  background: linear-gradient(to right, #00007b, #6666ff); /* Blue gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 
 .card-section .desc {
   font-size: 1.2rem;
@@ -231,4 +290,20 @@ body {
   width: 100%;
   height: auto;
   transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* Responsive Adjustments for Small Screens */
+@media (max-width: 900px) {
+  .card-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-section .card-img {
+    max-width: 500px;
+    width: 90%;
+    height: auto;
+    margin: auto;
+  }
 }

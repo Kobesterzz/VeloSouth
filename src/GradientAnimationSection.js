@@ -13,18 +13,21 @@ function GradientAnimationSection() {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const viewportHeight = window.innerHeight;
-
+  
       cardRefs.current.forEach((card, index) => {
         const start = index * viewportHeight;
         const end = start + viewportHeight;
-
-        // Update the background visual's filter
+  
         if (scrollTop >= start && scrollTop < end) {
+          // Update the visual class
           visualRef.current.className = `video-visual section-${index + 1}`;
+          
+          // Update the body class for dynamic text highlight color
+          document.body.className = `section-${index + 1}`;
         }
       });
     };
-
+  
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -38,7 +41,7 @@ function GradientAnimationSection() {
       alt: "Logo",
       headline: "Welcome To",
       highlight: "VeloSouth",
-      desc: "Join the battle and conquer the arena with unmatched skill and strategy.",
+      desc: "Experience the thrill of cycling and join a community built for riders.",
     },
     {
       id:"Ride-info",
@@ -46,7 +49,7 @@ function GradientAnimationSection() {
       alt: "Cyclist",
       headline: "Learn more About",
       highlight: "Ride Info",
-      desc: "Immerse yourself in a world where legends clash and heroes rise to glory.",
+      desc: "Find routes, tips, and all you need for our rides.",
     },
     {
       id:"Kits",
@@ -54,7 +57,7 @@ function GradientAnimationSection() {
       alt: "Kit",
       headline: "Buy our",
       highlight: "Kits",
-      desc: "Harness powerful spells and enchantments to dominate your foes and change the course of battle.",
+      desc: "Upgrade your ride with stylish and performance-driven gear.",
     },
     {
       id:"Pics",
@@ -62,7 +65,7 @@ function GradientAnimationSection() {
       alt: "Img of team",
       headline: "Take a look at our ",
       highlight: "Pictures",
-      desc: "Lead your team to victory with unparalleled strength and unwavering determination.",
+      desc: "View moments from past rides, showcasing our cycling efforts.",
     },
   ];
 
