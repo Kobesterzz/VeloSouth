@@ -48,16 +48,41 @@ body {
   align-items: center;
 }
 
+/* Hamburger Icon */
+.hamburger {
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 30px;
+  height: 3px;
+  background: #000;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+
 /* Navigation Container */
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-}
-
-.nav-items-left {
-  display: flex;
 }
 
 .nav-list {
@@ -94,7 +119,7 @@ body {
 /* Contact Button Styling */
 .contact-button {
   padding: 10px 20px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;
 
@@ -216,10 +241,12 @@ body.section-4 .contact-button {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   padding-top: 70px;
+  scroll-behavior: smooth; /* Smooth snapping effect */
 }
 
 /* Each Card Section */
 .card-section {
+  scroll-snap-align: start; /* Snap each section to the top of the viewport */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -306,4 +333,35 @@ body.section-4 .text-highlight {
     height: auto;
     margin: auto;
   }
+
+  .hamburger {
+    display: flex; /* Show hamburger on mobile */
+  }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+    display: none; /* Hidden by default */
+    transition: all 0.3s ease;
+  }
+
+  .nav.active {
+    display: flex; /* Show navigation menu when active */
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .contact-button {
+    margin-top: 10px;
+  }
+
 }
