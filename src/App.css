@@ -154,7 +154,7 @@ body {
   flex-direction: column;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
-  height: 100vh; /* Full screen for scroll container */
+  /*height: 100vh;  Full screen for scroll container */
   padding-top: 70px; /* To prevent content from overlapping header */
 }
 
