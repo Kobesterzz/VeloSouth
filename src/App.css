@@ -131,50 +131,52 @@ body {
   transition: background 0.3s ease, border-radius 0.3s ease, color 0.3s ease;
 }
 
-/* Dynamic Gradient for Highlighted Text and Contact Button */
 body.section-1 .contact-button {
-  border-image: linear-gradient(to right, #008200, #00bd00); /* Green gradient border */
-  border-image-slice: 1;
-  background: linear-gradient(to right, #008200, #00bd00); /* Gradient background for the text */
-  background-clip: text; /* Clip the background to the text */
-  -webkit-background-clip: text; /* WebKit-specific clipping */
-  -webkit-text-fill-color: transparent; /* Make the text itself transparent */
+  background: transparent; /* Green gradient */
+  color: rgb(0, 0, 0);
+  border: 2px solid #007b04;
 }
 
 body.section-2 .contact-button {
-  border-image: linear-gradient(to right, #909000, #be8f00); /* Yellow gradient border */
-  border-image-slice: 1;
-  background: linear-gradient(to right, #909000, #c09000); /* Gradient background for the text */
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: transparent; /* Yellow gradient */
+  color: rgb(0, 0, 0);
+  border: 2px solid #7b6b00;
 }
 
 body.section-3 .contact-button {
-  border-image: linear-gradient(to right, #6a0000, #ff6666); /* Red gradient border */
-  border-image-slice: 1;
-  background: linear-gradient(to right, #6a0000, #ff6666); /* Gradient background for the text */
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: transparent; /* Red gradient */
+  color: rgb(0, 0, 0);
+  border: 2px solid #7b1f00;
 }
 
 body.section-4 .contact-button {
-  border-image: linear-gradient(to right, #000087, #6666ff); /* Blue gradient border */
-  border-image-slice: 1;
-  background: linear-gradient(to right, #000087, #6666ff); /* Gradient background for the text */
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: transparent; /* Blue gradient */
+  color: rgb(0, 0, 0);
+  border: 2px solid #00007b;
 }
 
-/* Contact Button Hover Effect */
-.contact-button:hover {
-  background: linear-gradient(to right, currentColor, currentColor); /* Fill with gradient */
-  -webkit-background-clip: padding-box;
-  -webkit-text-fill-color: white;
-  color: white; /* Fallback for text */
-  border-radius: 30px; /* Ensure it remains rounded on hover */
+body.section-1 .contact-button:hover {
+  background: linear-gradient(to right, #008400, #4dd44d); /* Lighter green */
+  color: white;
+  border: 2px solid #0d560d;
+}
+
+body.section-2 .contact-button:hover {
+  background: linear-gradient(to right, #848400, #bc8d00); /* Lighter yellow */
+  color: white;
+  border: 2px solid #684e00;
+}
+
+body.section-3 .contact-button:hover {
+  background: linear-gradient(to right, #7c0000, #ff6565); /* Lighter red */
+  color: white;
+  border: 2px solid #4d0606;
+}
+
+body.section-4 .contact-button:hover {
+  background: linear-gradient(to right, #00007b, #6666ff); /* Lighter blue */
+  color: white;
+  border: 2px solid #6666ff;
 }
 
 /* Responsive Design */
