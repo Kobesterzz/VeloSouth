@@ -179,19 +179,28 @@ body.section-4 .contact-button:hover {
   border: 2px solid #6666ff;
 }
 
-.navigate-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+.content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.navigate-button:hover {
-  background-color: #0056b3;
+.link {
+  margin-top: 20px;
+  width: 30%;
+  padding: 10px 20px;
+  color: #000000;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: underline;
+  color: #000;
+  font-weight: bold;
+}
+
+.link:hover {
+  color: #0070f3;
 }
 
 /* Responsive Design */

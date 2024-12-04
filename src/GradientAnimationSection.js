@@ -111,7 +111,7 @@ function GradientAnimationSection() {
                 <span className="text-highlight"> {card.highlight}</span>
               </h2>
               <p className="desc">{card.desc}</p>
-              <a href={card.link}>{card.linkName}</a>
+              <a href={card.link} className='link'>{card.linkName}</a>
             </div>
             <div className="image">
               <img src={card.img} alt={card.alt} className="card-img" />
