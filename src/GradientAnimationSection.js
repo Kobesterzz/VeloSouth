@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom"; 
 import "./App.css";
 import Cycle from "./img/Cycle.png";
 import Kits from "./img/kits.png";
@@ -8,6 +9,7 @@ import Pic from "./img/Pic.jpg";
 function GradientAnimationSection() {
   const visualRef = useRef(null);
   const cardRefs = useRef([]);
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +52,8 @@ function GradientAnimationSection() {
       headline: "Learn more About",
       highlight: "Ride Info",
       desc: "Find routes, tips, and all you need for our rides.",
+      link: "/ride-info",
+      linkName: "Ride-Info",
     },
     {
       id:"Kits",
@@ -58,6 +62,8 @@ function GradientAnimationSection() {
       headline: "Buy our",
       highlight: "Kits",
       desc: "Upgrade your ride with stylish and performance-driven gear.",
+      link: "/kits",
+      linkName: "Kits",
     },
     {
       id:"Pics",
@@ -66,6 +72,8 @@ function GradientAnimationSection() {
       headline: "Take a look at our ",
       highlight: "Pictures",
       desc: "View moments from past rides, showcasing our cycling efforts.",
+      link: "/pics",
+      linkName: "Pictures",
     },
   ];
 
@@ -103,6 +111,7 @@ function GradientAnimationSection() {
                 <span className="text-highlight"> {card.highlight}</span>
               </h2>
               <p className="desc">{card.desc}</p>
+              <a href={card.link}>{card.linkName}</a>
             </div>
             <div className="image">
               <img src={card.img} alt={card.alt} className="card-img" />
