@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ContactModal from "./ContactModal";
 import "./css/App.css";
 
 function Header() {
@@ -7,6 +8,8 @@ function Header() {
   const toggleMenu = () => {
     setIsMenuActive(!isMenuActive); // Toggle the menu state
   };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <header className="header">
@@ -36,7 +39,10 @@ function Header() {
             <a href="#Pics">Pictures</a>
           </li>
         </ul>
-        <button className="contact-button">Contact Us</button>
+        <button className="contact-button" onClick={() => setIsModalOpen(true)}>
+        Contact
+        </button>
+        <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </nav>
     </header>
   );
