@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css"; // Make sure your CSS file path matches
+import "./css/App.css";
 
 function Header() {
   const [isMenuActive, setIsMenuActive] = useState(false);
