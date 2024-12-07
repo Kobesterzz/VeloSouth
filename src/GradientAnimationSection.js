@@ -38,7 +38,7 @@ function GradientAnimationSection() {
 
   const cards = [
     {
-      id:"welcome",
+      id: "welcome",
       img: Logo,
       alt: "Logo",
       headline: "Welcome To",
@@ -46,34 +46,31 @@ function GradientAnimationSection() {
       desc: "Experience the thrill of cycling and join a community built for riders.",
     },
     {
-      id:"Ride-info",
+      id: "Ride-info",
       img: Cycle,
       alt: "Cyclist",
       headline: "Learn more About",
       highlight: "Ride Info",
       desc: "Find routes, tips, and all you need for our rides.",
       link: "/ride-info",
-      linkName: "Ride-Info",
     },
     {
-      id:"Kits",
+      id: "Kits",
       img: Kits,
       alt: "Kit",
       headline: "Buy our",
       highlight: "Kits",
       desc: "Upgrade your ride with stylish and performance-driven gear.",
       link: "/kits",
-      linkName: "Kits",
     },
     {
-      id:"Pics",
+      id: "Pics",
       img: Pic,
       alt: "Img of team",
       headline: "Take a look at our ",
       highlight: "Pictures",
       desc: "View moments from past rides, showcasing our cycling efforts.",
       link: "/pics",
-      linkName: "Pictures",
     },
   ];
 
@@ -111,7 +108,7 @@ function GradientAnimationSection() {
                 <span className="text-highlight"> {card.highlight}</span>
               </h2>
               <p className="desc">{card.desc}</p>
-              <a href={card.link} className='link'>{card.linkName}</a>
+              <a href={card.link} className="link">→</a> {/* Changed link name to an arrow */}
             </div>
             <div className="image">
               <img src={card.img} alt={card.alt} className="card-img" />
