@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import "./css/App.css";
 import Cycle from "./img/Cycle.png";
 import Kits from "./img/kits.png";
@@ -9,27 +9,27 @@ import Pic from "./img/Pic.jpg";
 function GradientAnimationSection() {
   const visualRef = useRef(null);
   const cardRefs = useRef([]);
-  
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const viewportHeight = window.innerHeight;
-  
+
       cardRefs.current.forEach((card, index) => {
         const start = index * viewportHeight;
         const end = start + viewportHeight;
-  
+
         if (scrollTop >= start && scrollTop < end) {
           // Update the visual class
           visualRef.current.className = `video-visual section-${index + 1}`;
-          
+
           // Update the body class for dynamic text highlight color
           document.body.className = `section-${index + 1}`;
         }
       });
     };
-  
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -39,7 +39,7 @@ function GradientAnimationSection() {
   const cards = [
     {
       id: "welcome",
-      img: Logo,
+      img: "/img/logo.svg",
       alt: "Logo",
       headline: "Welcome To",
       highlight: "VeloSouth",
@@ -47,7 +47,7 @@ function GradientAnimationSection() {
     },
     {
       id: "Ride-info",
-      img: Cycle,
+      img: "/img/Cycle.png",
       alt: "Cyclist",
       headline: "Learn more About",
       highlight: "Ride Info",
@@ -56,7 +56,7 @@ function GradientAnimationSection() {
     },
     {
       id: "Kits",
-      img: Kits,
+      img: "/img/kits.png",
       alt: "Kit",
       headline: "Buy our",
       highlight: "Kits",
@@ -65,7 +65,7 @@ function GradientAnimationSection() {
     },
     {
       id: "Pics",
-      img: Pic,
+      img: "/img/Pic.jpg",
       alt: "Img of team",
       headline: "Take a look at our ",
       highlight: "Pictures",
@@ -76,7 +76,6 @@ function GradientAnimationSection() {
 
   return (
     <div className="gradient-animation-section">
-      {/* Background visual */}
       <div ref={visualRef} className="video-visual section-1">
         <video
           className="video"
@@ -92,8 +91,6 @@ function GradientAnimationSection() {
           />
         </video>
       </div>
-
-      {/* Scrollable card content */}
       <div className="scroll-container">
         {cards.map((card, index) => (
           <div
@@ -108,7 +105,11 @@ function GradientAnimationSection() {
                 <span className="text-highlight"> {card.highlight}</span>
               </h2>
               <p className="desc">{card.desc}</p>
-              <a href={card.link} className="link">→</a> {/* Changed link name to an arrow */}
+              {card.link ? (
+                <button onClick={() => navigate(card.link)} className="link">
+                  →
+                </button>
+              ) : null}
             </div>
             <div className="image">
               <img src={card.img} alt={card.alt} className="card-img" />
