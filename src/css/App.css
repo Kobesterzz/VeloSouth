@@ -252,8 +252,9 @@ body.section-4 .contact-button:hover {
   cursor: pointer;
   font-size: 2rem;
   text-decoration: none;
-  color: #000;
+  border: none;
   font-weight: bold;
+  background-color: #00000000;
 }
 
 .link:hover {
