@@ -16,18 +16,23 @@ function GradientAnimationSection() {
       const scrollTop = window.scrollY;
       const viewportHeight = window.innerHeight;
 
-      cardRefs.current.forEach((card, index) => {
-        const start = index * viewportHeight;
-        const end = start + viewportHeight;
+      // Filter out null/undefined elements in cardRefs before iterating
+      cardRefs.current
+        .filter(Boolean) // Skip null/undefined refs
+        .forEach((card, index) => {
+          const start = index * viewportHeight;
+          const end = start + viewportHeight;
 
-        if (scrollTop >= start && scrollTop < end) {
-          // Update the visual class
-          visualRef.current.className = `video-visual section-${index + 1}`;
+          if (scrollTop >= start && scrollTop < end) {
+            // Safely update visualRef's className
+            if (visualRef.current) {
+              visualRef.current.className = `video-visual section-${index + 1}`;
+            }
 
-          // Update the body class for dynamic text highlight color
-          document.body.className = `section-${index + 1}`;
-        }
-      });
+            // Update the body class for dynamic text highlight color
+            document.body.className = `section-${index + 1}`;
+          }
+        });
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -39,7 +44,7 @@ function GradientAnimationSection() {
   const cards = [
     {
       id: "welcome",
-      img: "/img/logo.svg",
+      img: Logo,
       alt: "Logo",
       headline: "Welcome To",
       highlight: "VeloSouth",
@@ -47,7 +52,7 @@ function GradientAnimationSection() {
     },
     {
       id: "Ride-info",
-      img: "/img/Cycle.png",
+      img: Cycle,
       alt: "Cyclist",
       headline: "Learn more About",
       highlight: "Ride Info",
@@ -56,7 +61,7 @@ function GradientAnimationSection() {
     },
     {
       id: "Kits",
-      img: "/img/kits.png",
+      img: Kits,
       alt: "Kit",
       headline: "Buy our",
       highlight: "Kits",
@@ -65,7 +70,7 @@ function GradientAnimationSection() {
     },
     {
       id: "Pics",
-      img: "/img/Pic.jpg",
+      img: Pic,
       alt: "Img of team",
       headline: "Take a look at our ",
       highlight: "Pictures",
