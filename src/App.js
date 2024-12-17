@@ -14,6 +14,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<VeloSouth />} />
+      <Route path="/velo-south" element={<VeloSouth />} />
       <Route path="/kits" element={<Kits />} />
       <Route path="/pictures" element={<Pictures />} />
       <Route path="/ride-info" element={<RideInfo />} />

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ContactModal from "./ContactModal";
 import "./css/App.css";
+import { Link } from "react-router-dom";
+import VeloSouth from "./pages/VeloSouth";
 
 function Header() {
   const [isMenuActive, setIsMenuActive] = useState(false);
@@ -27,7 +29,7 @@ function Header() {
       <nav className={`nav ${isMenuActive ? "active" : ""}`}>
         <ul className="nav-list">
           <li>
-            <a href="#welcome">Welcome</a>
+          <Link to="/velo-south">Welcome</Link>
           </li>
           <li>
             <a href="#Ride-info">Ride Info</a>
