@@ -32,13 +32,13 @@ const ContactModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className={`modal-overlay ${isOpen ? "active" : ""}`} onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="close-button" onClick={onClose}>
           &times;
         </button>
         <h2>Contact Us</h2>
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
           <div className="form-group">
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" placeholder="Your Name" />
@@ -56,6 +56,7 @@ const ContactModal = ({ isOpen, onClose }) => {
       </div>
     </div>
   );
+
 };
 
 export default ContactModal;
