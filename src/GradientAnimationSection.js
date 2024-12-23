@@ -75,7 +75,7 @@ function GradientAnimationSection() {
       headline: "Take a look at our ",
       highlight: "Pictures",
       desc: "View moments from past rides, showcasing our cycling efforts.",
-      link: "/pics",
+      link: "/pictures",
     },
   ];
 
