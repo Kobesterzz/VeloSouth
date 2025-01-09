@@ -18,8 +18,8 @@ const ContactModal = ({ isOpen, onClose }) => {
       const response = await fetch("http://localhost:5000/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+        body: JSON.stringify(formData``
+      )});
   
       if (response.ok) {
         alert("Email sent successfully!");
@@ -42,7 +42,7 @@ const ContactModal = ({ isOpen, onClose }) => {
         <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
           
           <div className="form-group">
-            <label htmlFor="email">Email us at: jhsgdhsg@gmail.com</label>
+            <label htmlFor="email">Email us at: Velosouthcyclingclub@gmail.com</label>
             
           </div>
           
