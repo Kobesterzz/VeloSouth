@@ -66,7 +66,7 @@ function GradientAnimationSection() {
       headline: "Buy our",
       highlight: "Kits",
       desc: "Upgrade your ride with stylish and performance-driven gear.",
-      link: "/kits",
+      externalLink: "https://jakroo.com/store-front?storeId=ryC2fsCfT", // External link
     },
     {
       id: "Pics",
@@ -112,6 +112,13 @@ function GradientAnimationSection() {
               <p className="desc">{card.desc}</p>
               {card.link ? (
                 <button onClick={() => navigate(card.link)} className="link">
+                  →
+                </button>
+              ) : card.externalLink ? (
+                <button
+                  onClick={() => window.open(card.externalLink, "_blank")}
+                  className="link"
+                >
                   →
                 </button>
               ) : null}

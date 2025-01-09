@@ -12,6 +12,7 @@ const ContactModal = ({ isOpen, onClose }) => {
       email: e.target.email.value,
       message: e.target.message.value,
     };
+    
   
     try {
       const response = await fetch("http://localhost:5000/send-email", {
