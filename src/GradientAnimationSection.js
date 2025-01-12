@@ -5,6 +5,9 @@ import Cycle from "./img/Cycle.png";
 import Kits from "./img/kits.png";
 import Logo from "./img/logo.svg";
 import Pic from "./img/Pic.jpg";
+import Footer from "./footer";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 function GradientAnimationSection() {
   const visualRef = useRef(null);
@@ -129,6 +132,8 @@ function GradientAnimationSection() {
           </div>
         ))}
       </div>
+
+      <Footer />
     </div>
   );
 }
