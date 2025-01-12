@@ -57,7 +57,7 @@ function GradientAnimationSection() {
       headline: "Learn more About",
       highlight: "Ride Info",
       desc: "Find routes, tips, and all you need for our rides.",
-      link: "/ride-info",
+      externalLink: "https://strava.app.link/He00SyGz6Pb", // External link
     },
     {
       id: "Kits",
